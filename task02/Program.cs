@@ -2,12 +2,8 @@
 
 namespace task02
 {
-    struct Train
+    internal struct Train
     {
-        private string destination;
-        private int number;
-        private DateTime departure;
-
         public Train(string destination, int number, DateTime departure) : this()
         {
             Destination = destination;
@@ -15,13 +11,16 @@ namespace task02
             Departure = departure;
         }
 
-        public string Destination { get => destination; set => destination = value; }
-        public int Number { get => number; set => number = value; }
-        public DateTime Departure { get => departure; set => departure = value; }
+        public string Destination { get; set; }
+
+        public int Number { get; set; }
+
+        public DateTime Departure { get; set; }
     }
-    class Program
+
+    internal static class Program
     {
-        static void Main()
+        private static void Main()
         {
             Train[] trains = new Train[8];
             for (int i = 0; i < 8; i++)
@@ -31,15 +30,15 @@ namespace task02
                 Console.Write("Destination: ");
                 instance.Destination = Console.ReadLine();
                 Console.Write("Train number: ");
-                instance.Number = int.Parse(Console.ReadLine());
+                instance.Number = int.Parse(Console.ReadLine() ?? string.Empty);
                 Console.Write("Departure time: ");
-                instance.Departure = DateTime.Parse(Console.ReadLine());//4/26/2021 12:00:00 AM
+                instance.Departure = DateTime.Parse(Console.ReadLine() ?? string.Empty);//4/26/2021 12:00:00 AM
                 trains[i] = instance;
             }
             Array.Sort(trains, (x, y) => x.Number.CompareTo(y.Number));
 
             Console.Write("Input train number for info:");
-            int number = int.Parse(Console.ReadLine());
+            int number = int.Parse(Console.ReadLine() ?? string.Empty);
             try
             {
                 Train train = trains[number];

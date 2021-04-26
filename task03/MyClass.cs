@@ -2,6 +2,6 @@
 {
     public class MyClass
     {
-        public string change;
+        public string Change;
     }
 }

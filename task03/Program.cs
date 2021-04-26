@@ -2,31 +2,33 @@
 
 namespace task03
 {
-    struct MyStruct
+    internal struct MyStruct
     {
-        public string change;
+        public string Change;
     }
 
-    class Program
+    internal static class Program
     {
-        static void ClassTaker(MyClass myClass)
+        private static void ClassTaker(MyClass myClass)
         {
-            myClass.change = "changed";
+            myClass.Change = "changed";
         }
-        static void StruktTaker(MyStruct myStruct)
+
+        private static void StructTaker(MyStruct myStruct)
         {
-            myStruct.change = "changed";
+            myStruct.Change = "changed";
         }
-        static void Main()
+
+        private static void Main()
         {
-            MyStruct myStruct = new MyStruct();
-            MyClass myClass = new MyClass();
-            myStruct.change = "not changed";
-            myClass.change = "not changed";
-            StruktTaker(myStruct);
+            var myStruct = new MyStruct();
+            var myClass = new MyClass();
+            myStruct.Change = "not changed";
+            myClass.Change = "not changed";
+            StructTaker(myStruct);
             ClassTaker(myClass);
-            Console.WriteLine($"myStruct.change: {myStruct.change}");
-            Console.WriteLine($"myClass.change: {myClass.change}");
+            Console.WriteLine($"myStruct.change: {myStruct.Change}");
+            Console.WriteLine($"myClass.change: {myClass.Change}");
         }
     }
 }
